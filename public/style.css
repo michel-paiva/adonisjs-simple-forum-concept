@@ -1,0 +1,21 @@
+body {
+  background: #DDDDDD;
+  padding-bottom: 1rem;
+  padding-top: 65px;
+}
+
+a, a:hover, a:active, a:visited {
+  text-decoration: none;
+}
+
+a:not([class]){
+  color: black;
+}
+
+.username {
+  white-space: nowrap;
+}
+
+.word-break {
+  word-wrap: break-word;
+}

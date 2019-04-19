@@ -1,0 +1,16 @@
+<form action="{{route('UserController.login')}}" method="POST">
+  {{ csrfField() }}
+  <div class="row">
+    <div class="col-md col-sm-12 mt-sm-2">
+        <input class="form-control" name="email" type="text" placeholder="E-mail" aria-label="E-mail">
+    </div>
+    <div class="col-md col-sm-12 mt-sm-2">
+        <input class="form-control" name="password" type="password" placeholder="Password" aria-label="Password">
+    </div>
+    <div class="col-md-2 col-sm-12 mt-sm-2">
+      <button class="btn btn-outline-success">
+        Login
+      </button>
+    </div>
+  </div>
+</form>

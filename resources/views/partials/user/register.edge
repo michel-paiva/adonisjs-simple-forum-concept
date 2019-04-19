@@ -1,0 +1,37 @@
+@layout('layout.main')
+@section('content_title')
+  Create account
+@endsection
+@section('content')
+<form action="{{route('UserController.store')}}" method="POST">
+  {{ csrfField() }}
+  <div class="row">
+    <div class="col-md-12 mt-2">
+        <input class="form-control" type="text" name="username" placeholder="Username" aria-label="Username">
+    </div>
+    <div class="col-md-12 mt-2">
+      <input class="form-control" type="text" name="email" placeholder="E-mail" aria-label="E-mail">
+    </div>
+    <div class="col-md-12 mt-2">
+      <input class="form-control" type="password" name="password" placeholder="Password" aria-label="Password">
+    </div>
+    <div class="col-md-12 mt-2">
+      <input class="form-control" type="password" name="password_confirmation" placeholder="Confirm Password" aria-label="Confirm Password">
+    </div>
+    <div class="col-md-12 mt-2">
+      @each(field in ['username', 'email', 'password'])
+        @if(hasErrorFor(field))
+          <div class="alert alert-danger" role="alert">
+            {{ getErrorFor(field) }}
+          </div>
+        @endif
+      @endeach
+    </div>
+    <div class="col-md-12 mt-2">
+      <button class="btn btn-success">
+        Register
+      </button>
+    </div>
+  </div>
+</form>
+@endsection

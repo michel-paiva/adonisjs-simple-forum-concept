@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>
+    Forum
+  </title>
+  {{ style('https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css') }}
+  {{ style('https://use.fontawesome.com/releases/v5.8.1/css/all.css') }}
+  {{ style('https://cdn.jsdelivr.net/npm/froala-editor@2.9.5/css/froala_editor.pkgd.min.css') }}
+  {{ style('https://cdn.jsdelivr.net/npm/froala-editor@2.9.5/css/froala_style.min.css') }}
+  {{ style('style') }}
+</head>
+<body>
+  <header>
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+      <a class="navbar-brand" href="/">Forum</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="/">Dashboard <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item active">
+          <a class="nav-link" href="{{route('ThreadController.index')}}">All Threads<span class="sr-only">(current)</span></a>
+            </li>
+        </ul>
+        <div class="row float-md-right mt-2 mt-md-0 mr-2">
+          @loggedIn
+            @include('partials.user.logged')
+          @else
+            <div class="col-md-10">
+              @include('partials.user.authentication')
+            </div>
+            <div class="col-md-2 col-sm-12 mt-sm-2">
+              <a href="{{route('UserController.create')}}" class="btn btn-outline-info">
+                Register
+              </a>
+            </div>
+          @endloggedIn
+        </div>
+      </div>
+    </nav>
+  </header>
+  <main role="main">
+    <div class="container">
+      <div>
+        <h1>
+          @!section('content_title')
+        </h1>
+      </div>
+      @!section('content')
+    </div>
+  </main>
+
+  {{script('https://code.jquery.com/jquery-3.3.1.slim.min.js')}}
+  {{script('https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js')}}
+  {{script('https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js')}}
+  {{script('https://cdn.jsdelivr.net/npm/froala-editor@2.9.5/js/froala_editor.pkgd.min.js')}}
+  {{script('script.js')}}
+</body>
+</html>

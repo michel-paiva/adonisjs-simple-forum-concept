@@ -1,0 +1,13 @@
+<div class="row mt-sm-2">
+  <div class="username col">
+    <h3 class="text-light">{{ truncate(auth.user.username,30,'...') }}</h2>
+  </div>
+  <div class="col">
+    <form action="{{route('UserController.logout')}}" method="POST">
+      {{ csrfField() }}
+      <button class="btn btn-outline-warning">
+        Logout
+      </button>
+    </form>
+  </div>
+</div>

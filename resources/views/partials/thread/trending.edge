@@ -1,0 +1,21 @@
+<table class="table bg-white">
+  <thead>
+    <tr class="thead-dark">
+      <th scope="col" colspan="3">Trending</th>
+    </tr>
+    <tr>
+      <th scope="col">Title</th>
+      <th scope="col">Date</th>
+      <th scope="col">Comments</th>
+    </tr>
+  </thead>
+  <tbody>
+    @each(thread in trending)
+      <tr>
+        <th scope="row"><a href="{{route('ThreadController.show',{id: thread.id})}}">{{truncate(thread.title,28,'...')}}</a></th>
+        <td>{{ dateformat(thread.created_at) }}</td>
+        <td>{{thread.__meta__.comments_count}}</td>
+      </tr>
+    @endeach
+  </tbody>
+</table>

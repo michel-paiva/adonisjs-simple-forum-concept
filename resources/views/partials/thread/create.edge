@@ -1,0 +1,31 @@
+@layout('layout.main')
+@section('content_title')
+  Create thread
+@endsection
+@section('content')
+<form action="{{route('ThreadController.store')}}" method="POST">
+  {{ csrfField() }}
+  <div class="row">
+    <div class="col-md-12 mt-2">
+        <input class="form-control" type="text" name="title" placeholder="Title" aria-label="Title">
+    </div>
+    <div class="col-md-12 mt-2">
+      <textarea class="wysiwyg"  name="content"></textarea>
+    </div>
+    <div class="col-md-12 mt-2">
+      @each(field in ['title', 'content'])
+        @if(hasErrorFor(field))
+          <div class="alert alert-danger" role="alert">
+            {{ getErrorFor(field) }}
+          </div>
+        @endif
+      @endeach
+    </div>
+    <div class="col-md-12 mt-2">
+      <button class="btn btn-success">
+        Create
+      </button>
+    </div>
+  </div>
+</form>
+@endsection

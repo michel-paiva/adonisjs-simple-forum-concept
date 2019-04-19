@@ -1,0 +1,35 @@
+@layout('layout.main')
+@section('content_title')
+  All Threads
+@endsection
+@section('content')
+  @loggedIn
+    <div class="row mb-2">
+      <div class="col">
+        <a href="{{route('ThreadController.create')}}" class="btn btn-success float-right">Create Thread</a>
+      </div>
+    </div>
+  @endloggedIn
+  <table class="table bg-white">
+    <tr class="thead-dark">
+      <th scope="col">Title</th>
+      <th scope="col">Date</th>
+      <th scope="col">Comments</th>
+    </tr>
+    <tbody>
+      @each(thread in threads)
+        <tr>
+          <th scope="row"><a href="{{route('ThreadController.show',{id: thread.id})}}">{{truncate(thread.title,28,'...')}}</a></th>
+          <td>{{ dateformat(thread.created_at) }}</td>
+          <td>{{thread.__meta__.comments_count}}</td>
+        </tr>
+      @endeach
+    </tbody>
+  </table>
+  @!component('components.pagination', 
+    page = pagination.page, 
+    per_page = pagination.perPage,
+    last_page = pagination.lastPage,
+    action = 'ThreadController.index'
+  )
+@endsection

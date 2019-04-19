@@ -1,0 +1,26 @@
+<div class="bg-light p-2 mt-1">
+  <div class="ml-3">
+    <h4>Commment</h4>
+  </div>
+  <form action="{{route('CommentController.store')}}" method="POST">
+    {{ csrfField() }}
+      <input type="hidden" name="thread_id" value="{{thread.id}}">
+      <div class="col-md-12 mt-2">
+        <textarea class="wysiwyg"  name="content"></textarea>
+      </div>
+      <div class="col-md-12 mt-2">
+        @each(field in ['thread_id','content'])
+          @if(hasErrorFor(field))
+            <div class="alert alert-danger" role="alert">
+              {{ getErrorFor(field) }}
+            </div>
+          @endif
+        @endeach
+      </div>
+      <div class="col-md-12 mt-2">
+        <button class="btn btn-success">
+          Comment
+        </button>
+      </div>
+  </form>
+</div>

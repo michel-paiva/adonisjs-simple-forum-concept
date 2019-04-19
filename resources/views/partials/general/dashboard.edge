@@ -1,0 +1,25 @@
+@layout('layout.main')
+@section('content_title')
+  Dashboard
+@endsection
+@section('content')
+  @loggedIn
+    <div class="row mb-2">
+      <div class="col">
+        <a href="{{route('ThreadController.create')}}" class="btn btn-success float-right">Create Thread</a>
+      </div>
+    </div>
+  @endloggedIn
+  <div class="row">
+    <div class="col">
+      @include('partials.thread.trending')
+    </div>
+    <div class="col">
+      @loggedIn
+        @include('partials.thread.yours')
+      @else
+        @include('partials.thread.newer')
+      @endloggedIn
+    </div>
+  </div>
+@endsection
