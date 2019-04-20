@@ -24,3 +24,7 @@ to create the database run `adonis migration:run`
 to serve locally run `adonis server --dev`
 
 For development it's using SQlite so it will create the database automatically when you run the migrations
+
+## Running example
+
+A running example can be found [here](https://mini-forum.herokuapp.com)
