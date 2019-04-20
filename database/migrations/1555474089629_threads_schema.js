@@ -9,7 +9,7 @@ class ThreadsSchema extends Schema {
       table.increments()
       table.string('title', 254).notNullable()
       table.text('content').notNullable()
-      table.integer('user_id').references('id').inTable('users').notNullable()
+      table.integer('user_id').unsigned().references('id').inTable('users')
       table.timestamps()
     })
   }
