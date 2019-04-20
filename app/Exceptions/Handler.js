@@ -20,10 +20,17 @@ class ExceptionHandler extends BaseExceptionHandler {
    *
    * @return {void}
    */
-  async handle (error, { request, response }) {
+  async handle (error, { request, response, view }) {
     if(error.name === 'InvalidSessionException'){
       return response.redirect('/')
     }
+
+    if(error.status == 404){
+      const page = view.render('partials.general.notfound')
+
+      return response.status(404).send(page)
+    }
+
     return super.handle(...arguments)
   }
 

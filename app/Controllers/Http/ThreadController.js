@@ -1,6 +1,7 @@
 'use strict'
 
 const Thread = use('App/Models/Thread')
+const NotFoundException = use('App/Exceptions/NotFoundException')
 /** @typedef {import('@adonisjs/framework/src/Request')} Request */
 /** @typedef {import('@adonisjs/framework/src/Response')} Response */
 /** @typedef {import('@adonisjs/framework/src/View')} View */
@@ -71,6 +72,11 @@ class ThreadController {
    */
   async show ({ params, request, response, view }) {
     const thread = await Thread.find(params.id)
+
+    if(!thread){
+      throw new NotFoundException('Thread not found',404,'THREAD_NOT_FOUND')
+    }
+
     await thread.loadMany(['author','comments', 'comments.author'])
 
     if(!thread){
