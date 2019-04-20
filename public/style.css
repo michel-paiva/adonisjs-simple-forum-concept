@@ -19,3 +19,11 @@ a:not([class]){
 .word-break {
   word-wrap: break-word;
 }
+
+a[target=_blank] {
+  display: none !important;
+}
+
+p[data-f-id=pbf] {
+  display: none !important;
+}
